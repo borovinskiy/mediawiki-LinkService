@@ -1,17 +1,23 @@
 <?php
 
 class LinkServiceYouTube extends LinkServiceImpl {
+	
+	private static $youtubeIdRegexp = '[\d\w\_\-\!\#]*';
+	
         public static function parse($url,$service,$path,$hash=false) {
                 if ($service == 'www.youtube.com' || $service == 'youtube.com') {
-                        if ( preg_match("/^watch\?([\d\w\_\-\!\=\&]*\&)?v=([\d\w\_\-\!\#]*)(&|$)/",$path,$matches) ) {
+                        if ( preg_match("/^watch\?([\d\w\_\-\!\=\&]*\&)?v=(" . self::$youtubeIdRegexp . ")(&|$)/",$path,$matches) ) {
                                 $id = $matches[2];
-                                $result = self::getYouTubeVideo($id,$url);
-                                if ($result) {
-                                        return $result;
-                                }
+                                return self::getYouTubeVideo($id,$url);
                         }
                         //return "Вызван фильтр вКонтакте";
                         return false;
+                }
+                if ($service == 'youtu.be') {
+                        if (preg_match("/^(" . self::$youtubeIdRegexp . ")(&|$)/",$path,$matches)) {
+                                $id = $matches[1];
+                                return self::getYouTubeVideo($id,$url);
+                        }
                 }
         }
 
