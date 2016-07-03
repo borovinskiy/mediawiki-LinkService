@@ -10,7 +10,6 @@ class LinkServiceYouTube extends LinkServiceImpl {
                                 $id = $matches[2];
                                 return self::getYouTubeVideo($id,$url);
                         }
-                        //return "Вызван фильтр вКонтакте";
                         return false;
                 }
                 if ($service == 'youtu.be') {
