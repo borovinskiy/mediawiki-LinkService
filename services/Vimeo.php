@@ -19,7 +19,7 @@ class LinkServiceVimeo extends LinkServiceImpl {
 	public static function getVimeoVideo($id,$url) {
 		$result = false;
 		if (strlen($id)>0) {
-			$result = '<iframe class="embed" src="http://player.vimeo.com/video/'.$id.'" width="640" height="425" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+			$result = '<iframe class="embed" src="https://player.vimeo.com/video/'.$id.'" width="640" height="425" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 		}		
 		return $result;
 	}
