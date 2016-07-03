@@ -24,7 +24,7 @@ class LinkServiceYouTube extends LinkServiceImpl {
 	public static function getYouTubeVideo($id,$url) {
 		$result = false;
 		if (strlen($id)>0) {
-			$result = '<iframe class="embed" width="640" height="360" src="http://www.youtube.com/embed/'.$id.'?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>';
+			$result = '<iframe class="embed" width="640" height="360" src="https://www.youtube.com/embed/'.$id.'?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>';
 		}		
 		return $result;
 	}
