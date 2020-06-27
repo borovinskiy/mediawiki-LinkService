@@ -33,6 +33,9 @@ global $wgLinkService;
 $wgLinkService[]['class'] = 'LinkServiceSimpleList';
 $wgAutoloadClasses['LinkServiceSimpleList'] = __DIR__ . '/services/SimpleList.php';
 
+$wgLinkService[]['class'] = 'LinkServiceELiS';
+$wgAutoloadClasses['LinkServiceELiS'] = __DIR__ .       '/services/ELiS.php';
+
 $wgLinkService[]['class'] = 'LinkServiceVkontakte'; 
 $wgAutoloadClasses['LinkServiceVkontakte'] = __DIR__ . 	'/services/Vkontakte.php';
 
