@@ -15,7 +15,6 @@ class LinkServiceYouTube extends LinkServiceImpl {
                         return false;
                 }
                 if ($service == 'youtu.be') {
-                        $t = preg_match();
                         if (preg_match("/^(" . self::$youtubeIdRegexp . ")(\?|&|$)/",$path,$matches)) {
                                 $id = $matches[1];
                                 $t = self::getYoutubeTime($path);
@@ -26,7 +25,7 @@ class LinkServiceYouTube extends LinkServiceImpl {
         public static function getYouTubeVideo($id,$url,$service,$t=false) {
                 $result = false;
                 $time = ($t !== false) ? '&' . $t : '';
-                $youtubeUrl =  $youtubeUrl = 'https://www.youtube.com/embed/' . $id . '?feautre=player_detailpage' . $time;
+                $youtubeUrl = 'https://youtube.com/embed/' . $id . '?feautre=player_detailpage' . $time;
                 if (strlen($id)>0) {
                         $result = '<iframe class="embed" width="640" height="360" src="' . $youtubeUrl . '" frameborder="0" allowfullscreen></iframe>';
                 }
@@ -45,6 +44,9 @@ class LinkServiceYouTube extends LinkServiceImpl {
                         }
                         if (preg_match("/(\d+)h/",$t,$hour_match)) {
                                 $s += $hour_match[1] * 3600;
+                        }
+                        if (preg_match("/^t=(\d+)$/", $t, $sec_match)) {
+                                $s = (int) $sec_match[1];
                         }
                         if ($s > 0) {
                                 $t = 'start=' . $s;
